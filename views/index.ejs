@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <% if (currentUser) { %>
+    <h1>WELCOME BACK <%= currentUser.username %></h1>
+    <% }else{ %>
+    <h2><%= title %></h2>
+    <p>Welcome to <%= title %></p>
+    <%}%>
+
+    <div class="container">messages will go here</div>
+  </body>
+</html>
