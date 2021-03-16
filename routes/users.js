@@ -15,14 +15,26 @@ router.get("/signup", (req, res, next) => {
 
 router.post("/signup", async (req, res, next) => {
   const { username, password, confirmPassword } = req.body;
+  const user = await User.findOne({ username });
   if (!username || !password || !confirmPassword) {
     return res.send("please provide all details");
   } else if (password !== confirmPassword) {
     return res.send("passwords must match");
+  } else if (user) {
+    return res.send("User already exits");
   }
+  const cleanUsername = username.trim().toLowerCase();
   bcrypt.hash(password, 8, async function (err, hash) {
-    const user = await new User({ username, password: hash }).save();
-    return res.send("registration successful" + user.username);
+    const user = await new User({
+      username: cleanUsername,
+      password: hash,
+    }).save();
+    req.login(user, function (err) {
+      if (err) {
+        return next(err);
+      }
+      return res.redirect("/");
+    });
   });
 });
 

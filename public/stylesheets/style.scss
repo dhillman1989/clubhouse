@@ -25,7 +25,8 @@ body {
 
 .button {
   padding: 1rem 2rem;
-  margin-right: 1rem;
+  margin-top: 1rem;
+  max-width: 150px;
   border-radius: 0.5rem;
   border: 0;
   outline: 0;
@@ -47,5 +48,20 @@ body {
     border-radius: 0.5rem;
     padding: 0.1rem 0.5rem;
     margin: 2rem 0;
+  }
+}
+
+.form{
+  &--column{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+  }
+  &__input{
+    border: 2px solid rgba(0,0,0,0.5);
+    outline: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
   }
 }
