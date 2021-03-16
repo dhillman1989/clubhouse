@@ -22,7 +22,7 @@ router.post("/signup", async (req, res, next) => {
   }
   bcrypt.hash(password, 8, async function (err, hash) {
     const user = await new User({ username, password: hash }).save();
-    res.send("registration successful" + user.username);
+    return res.send("registration successful" + user.username);
   });
 });
 
@@ -37,5 +37,10 @@ router.post(
     failureRedirect: "/users/signup",
   })
 );
+
+router.get("/logout", function (req, res) {
+  req.logout();
+  res.redirect("/");
+});
 
 module.exports = router;

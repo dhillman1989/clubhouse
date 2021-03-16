@@ -8,8 +8,12 @@
     <div class="container">
       <h2><%= title %></h2>
       <p>Welcome to the clubhouse</p>
-      <% if (currentUser) { %>
+      <% if (currentUser && currentUser.isMember){ %>
       <a href="/messages/create" class="button button--primary">Add Message</a>
+      <%}%>
+      <!------->
+      <% if (currentUser) { %>
+      <a href="/users/logout" class="button button--primary">Logout</a>
       <% }else{ %>
       <a href="/users/login" class="button button--primary">Login</a><% }%>
 
@@ -17,10 +21,17 @@
         <% messages.map(m => {%>
         <div class="messages__message">
           <% if(currentUser && currentUser.isAdmin){ %>
-          <button class="button button--danger">Delete</button>
+          <form action="/messages/<%= m.id %>/delete" method="POST">
+            <button class="button button--danger">Delete</button>
+          </form>
           <% } %>
           <h2><%=m.title%></h2>
+          <h5><%=m.user.username%></h5>
+          <% if (currentUser && currentUser.isMember) {%>
           <p><%=m.text%></p>
+          <% } else{ %>
+          <sup>Only members are allowed to read this message</sup>
+          <% } %>
         </div>
         <%})%>
       </div>

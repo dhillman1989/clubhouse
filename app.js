@@ -33,20 +33,15 @@ passport.use(
   new LocalStrategy((username, password, done) => {
     User.findOne({ username: username }, (err, user) => {
       if (err) {
-        console.log("fail");
         return done(err);
       }
       if (!user) {
-        console.log("fail");
         return done(null, false, { message: "Incorrect username" });
       }
-      console.log(user);
       bcrypt.compare(password, user.password, (err, res) => {
         if (res) {
-          console.log("match");
           return done(null, user);
         } else {
-          console.log("no match");
           // passwords do not match!
           return done(null, false, { message: "Incorrect password" });
         }
