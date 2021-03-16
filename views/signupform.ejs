@@ -10,6 +10,14 @@
   <body>
     <div class="container">
       <form class="form form--column" action="" method="POST">
+        <% if (typeof(errors) !== "undefined" ){ %>
+        <div class="errors">
+          <% errors.map(err => { %>
+          <p class="errors__error"><%= err %></p>
+          <%})%>
+        </div>
+
+        <%}%>
         <label for="username">Username: </label>
         <input type="text" name="username" id="username" />
         <label for="password">Password: </label>

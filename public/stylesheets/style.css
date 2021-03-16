@@ -16,6 +16,7 @@ body {
 
 .container {
   max-width: 370px;
+  width: 100%;
   margin: 0 auto; }
 
 .button {
@@ -45,12 +46,22 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; }
+  align-items: stretch; }
 
 .form__input {
   border: 2px solid rgba(0, 0, 0, 0.5);
   outline: none;
   border-radius: 0.5rem;
-  padding: 0.5rem 1rem; }
+  padding: 1rem 1.5rem;
+  width: 100%; }
+
+.errors {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: #ff3838;
+  border-radius: 0.25rem; }
+  .errors__error {
+    font-size: 1.4rem;
+    color: #fff; }
 
 /*# sourceMappingURL=style.css.map */

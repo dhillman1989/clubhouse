@@ -20,6 +20,7 @@ body {
 
 .container {
   max-width: 370px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -56,12 +57,26 @@ body {
     display: flex;
     flex-direction:column;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
   }
   &__input{
     border: 2px solid rgba(0,0,0,0.5);
     outline: none;
     border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
+
+    padding: 1rem 1.5rem;
+    width: 100%;
+  }
+
+}
+
+.errors{
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: rgb(255, 56, 56);
+  border-radius: 0.25rem;
+  &__error{
+    font-size: 1.4rem;
+    color: #fff;
   }
 }
