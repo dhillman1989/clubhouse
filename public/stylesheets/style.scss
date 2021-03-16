@@ -1,0 +1,51 @@
+* {
+  list-style-type: none;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: #ddd;
+  color: #111;
+  font-size: 1.6rem;
+  font-family: arial, sans-serif;
+}
+
+.container {
+  max-width: 370px;
+  margin: 0 auto;
+}
+
+.button {
+  padding: 1rem 2rem;
+  margin-right: 1rem;
+  border-radius: 0.5rem;
+  border: 0;
+  outline: 0;
+  &--primary {
+    background-color: rgb(0, 156, 0);
+    color: #fff;
+  }
+  &--danger {
+    background-color: rgb(255, 64, 64);
+    color: #fff;
+  }
+}
+
+.messages {
+  width: 100%;
+  &__message {
+    width: 95%;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 0.1rem 0.5rem;
+    margin: 2rem 0;
+  }
+}

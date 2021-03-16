@@ -22,7 +22,7 @@ router.post("/create", isLoggedIn, isMember, async function (req, res, next) {
     user: req.user,
     date: Date.now(),
   }).save();
-  res.send("message posted successfully");
+  res.redirect("/");
 });
 
 module.exports = router;

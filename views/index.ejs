@@ -5,13 +5,25 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <% if (currentUser) { %>
-    <h1>WELCOME BACK <%= currentUser.username %></h1>
-    <% }else{ %>
-    <h2><%= title %></h2>
-    <p>Welcome to <%= title %></p>
-    <%}%>
+    <div class="container">
+      <h2><%= title %></h2>
+      <p>Welcome to the clubhouse</p>
+      <% if (currentUser) { %>
+      <a href="/messages/create" class="button button--primary">Add Message</a>
+      <% }else{ %>
+      <a href="/users/login" class="button button--primary">Login</a><% }%>
 
-    <div class="container">messages will go here</div>
+      <div class="messages">
+        <% messages.map(m => {%>
+        <div class="messages__message">
+          <% if(currentUser && currentUser.isAdmin){ %>
+          <button class="button button--danger">Delete</button>
+          <% } %>
+          <h2><%=m.title%></h2>
+          <p><%=m.text%></p>
+        </div>
+        <%})%>
+      </div>
+    </div>
   </body>
 </html>
