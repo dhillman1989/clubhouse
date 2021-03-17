@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const User = require("../models/User");
+const isLoggedIn = require("../middleware/isLoggedIn");
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
@@ -60,6 +61,20 @@ router.post(
 router.get("/logout", function (req, res) {
   req.logout();
   res.redirect("/");
+});
+
+router.get("/activate", isLoggedIn, function (req, res) {
+  res.render("activateMembership");
+});
+
+router.post("/activate", isLoggedIn, async function (req, res) {
+  const { code } = req.body;
+  if (code !== process.env.MEMBERSHIP_CODE) {
+    res.render("activateMembership", { error: "Invalid code" });
+  } else {
+    await User.findByIdAndUpdate(req.user.id, { isMember: true });
+    res.redirect("/users/activate");
+  }
 });
 
 module.exports = router;
