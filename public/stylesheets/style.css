@@ -25,7 +25,8 @@ body {
   max-width: 150px;
   border-radius: 0.5rem;
   border: 0;
-  outline: 0; }
+  outline: 0;
+  cursor: pointer; }
   .button--primary {
     background-color: #009c00;
     color: #fff; }

@@ -4,6 +4,16 @@ const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const User = require("../models/User");
 const isLoggedIn = require("../middleware/isLoggedIn");
+const nodemailer = require("nodemailer");
+
+///NODEMAILER SETUP
+var transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS,
+  },
+});
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
@@ -15,7 +25,7 @@ router.get("/signup", (req, res, next) => {
 });
 
 router.post("/signup", async (req, res, next) => {
-  const { username, password, confirmPassword } = req.body;
+  const { username, password, confirmPassword, email } = req.body;
   const user = await User.findOne({ username });
   const errors = [];
   if (!username || !password || !confirmPassword) {
@@ -36,6 +46,25 @@ router.post("/signup", async (req, res, next) => {
         username: cleanUsername,
         password: hash,
       }).save();
+
+      //SEND ACTIVATION EMAIL
+      const mailOptions = {
+        from: process.env.MAIL_USER,
+        to: email,
+        subject: "Welcome to the ClubHouse",
+        text:
+          "Before you can make use of the Clubhouse you will need to activate your account using this secret code: INDACLUB",
+        html: `Before you can make use of the Clubhouse you will need to activate your account using this secret code: <h1>INDACLUB</h1>
+          Login and verify your account at <a href="${process.env.PRODUCTION_URL}/users/activate">${process.env.PRODUCTION_URL}/users/activate </a>`,
+      };
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Email sent: " + info.response);
+        }
+      });
+
       req.login(user, function (err) {
         if (err) {
           return next(err);
@@ -69,7 +98,7 @@ router.get("/activate", isLoggedIn, function (req, res) {
 
 router.post("/activate", isLoggedIn, async function (req, res) {
   const { code } = req.body;
-  if (code !== process.env.MEMBERSHIP_CODE) {
+  if (code.toLowerCase() != process.env.MEMBERSHIP_CODE.toLowerCase()) {
     res.render("activateMembership", { error: "Invalid code" });
   } else {
     await User.findByIdAndUpdate(req.user.id, { isMember: true });

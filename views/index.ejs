@@ -18,6 +18,9 @@
       <a href="/users/login" class="button button--primary">Login</a><% }%>
 
       <div class="messages">
+        <%if (!messages.length) { %> 
+            <p>No messages yet, be the first to post a story.</p>
+          <% } else { %>
         <% messages.map(m => {%>
         <div class="messages__message">
           <% if(currentUser && currentUser.isAdmin){ %>
@@ -25,16 +28,22 @@
             <button class="button button--danger">Delete</button>
           </form>
           <% } %>
+
           <h2><%=m.title%></h2>
-          <h5><%=m.user.username%></h5>
           <% if (currentUser && currentUser.isMember) {%>
-          <p><%=m.text%></p>
+          <h5><%=m.user.username%>
+          <h6><%= moment(m.date).format('Do MMMM, YYYY')%></h6>
           <% } else{ %>
-          <sup>Only members are allowed to read this message</sup>
+
+          <h5>Author hidden</h5>
+          <h6>timestamp unavailable</h6>
+
           <% } %>
+          <p><%=m.text%></p>
         </div>
         <%})%>
       </div>
+      <% } %> 
     </div>
   </body>
 </html>

@@ -10,6 +10,7 @@ const sassMiddleware = require("node-sass-middleware");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const dotenv = require("dotenv").config();
+const moment = require("moment");
 
 const User = require("./models/User");
 
@@ -84,6 +85,11 @@ app.use(
   })
 );
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use((req, res, next) => {
+  res.locals.moment = moment;
+  next();
+});
 
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
