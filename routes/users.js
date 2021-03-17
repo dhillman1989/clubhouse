@@ -54,7 +54,7 @@ router.post("/signup", async (req, res, next) => {
         subject: "Welcome to the ClubHouse",
         text:
           "Before you can make use of the Clubhouse you will need to activate your account using this secret code: INDACLUB",
-        html: `Before you can make use of the Clubhouse you will need to activate your account using this secret code: <h1>INDACLUB</h1>
+        html: `Before you can make use of the Clubhouse you will need to activate your account using this secret code: <h1>${process.env.MEMBERSHIP_CODE}</h1>
           Login and verify your account at <a href="${process.env.PRODUCTION_URL}/users/activate">${process.env.PRODUCTION_URL}/users/activate </a>`,
       };
       transporter.sendMail(mailOptions, function (error, info) {

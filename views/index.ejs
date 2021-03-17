@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-  </head>
-  <body>
-    <div class="container">
+<%- include ../partials/header %>
       <h2><%= title %></h2>
       <p>Welcome to the clubhouse</p>
       <% if (currentUser && currentUser.isMember){ %>
@@ -26,7 +19,7 @@
           <% if(currentUser && currentUser.isAdmin){ %>
           <form action="/messages/<%= m.id %>/delete" method="POST">
             <button class="button button--danger">Delete</button>
-          </form>
+        </form>
           <% } %>
 
           <h2><%=m.title%></h2>
@@ -44,6 +37,6 @@
         <%})%>
       </div>
       <% } %> 
-    </div>
-  </body>
-</html>
+
+
+      <%- include ../partials/footer %>
