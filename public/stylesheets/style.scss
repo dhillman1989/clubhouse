@@ -13,6 +13,7 @@ html {
   font-size: 62.5%;
 }
 
+//variables
 $sp-sm: 1rem;
 $sp-md: 2rem;
 $sp-lg: 3rem;
@@ -24,6 +25,16 @@ body {
   font-family: arial, sans-serif;
 }
 
+//typography
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: $sp-lg 0;
+}
+
 .nav {
   height: 5rem;
   padding: $sp-sm $sp-md;
@@ -31,6 +42,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: $sp-lg;
   &__logo {
     font-size: 5rem;
     color: #fff;

@@ -16,13 +16,22 @@ body {
   font-size: 1.6rem;
   font-family: arial, sans-serif; }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 3rem 0; }
+
 .nav {
   height: 5rem;
   padding: 1rem 2rem;
   background-color: #2e5a25;
   display: flex;
   justify-content: space-between;
-  align-items: center; }
+  align-items: center;
+  margin-bottom: 3rem; }
   .nav__logo {
     font-size: 5rem;
     color: #fff;

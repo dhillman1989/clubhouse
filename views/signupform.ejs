@@ -1,33 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>Sign Up</title>
-  </head>
-  <body>
-    <div class="container">
-      <form class="form form--column" action="" method="POST">
-        <% if (typeof(errors) !== "undefined" ){ %>
-        <div class="errors">
-          <% errors.map(err => { %>
-          <p class="errors__error"><%= err.msg %></p>
-          <%})%>
-        </div>
+<%- include ../partials/header %>
+<form class="form form--column" action="" method="POST">
+  <% if (typeof(errors) !== "undefined" ){ %>
+  <div class="errors">
+    <% errors.map(err => { %>
+    <p class="errors__error"><%= err.msg %></p>
+    <%})%>
+  </div>
 
-        <%}%>
-        <label for="username">Username: </label>
-        <input type="text" name="username" id="username" />
-        <label for="email">Email: </label>
-        <input type="email" name="email" id="email" />
-        <label for="password">Password: </label>
-        <input type="password" name="password" id="password" />
-        <label for="confirmPassword">Confirm Password </label>
-        <input type="password" name="confirmPassword" id="confirmPassword" />
-        <button class="button button--primary">Sign Up Now</button>
-      </form>
-    </div>
-  </body>
-</html>
+  <%}%>
+  <label for="username">Username: </label>
+  <input type="text" name="username" id="username" />
+  <label for="email">Email: </label>
+  <input type="email" name="email" id="email" />
+  <label for="password">Password: </label>
+  <input type="password" name="password" id="password" />
+  <label for="confirmPassword">Confirm Password </label>
+  <input type="password" name="confirmPassword" id="confirmPassword" />
+  <button class="button button--primary">Sign Up Now</button>
+</form>
+<%- include ../partials/footer %>
