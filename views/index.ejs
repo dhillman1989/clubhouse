@@ -1,15 +1,11 @@
 <%- include ../partials/header %>
-      <h2><%= title %></h2>
+      
       <p>Welcome to the clubhouse</p>
       <% if (currentUser && currentUser.isMember){ %>
       <a href="/messages/create" class="button button--primary">Add Message</a>
       <%}%>
       <!------->
-      <% if (currentUser) { %>
-      <a href="/users/logout" class="button button--primary">Logout</a>
-      <% }else{ %>
-      <a href="/users/login" class="button button--primary">Login</a><% }%>
-
+      
       <div class="messages">
         <%if (!messages.length) { %> 
             <p>No messages yet, be the first to post a story.</p>

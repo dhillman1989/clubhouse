@@ -1,5 +1,7 @@
 * {
-  list-style-type: none; }
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
 
 a:link,
 a:visited {
@@ -14,14 +16,27 @@ body {
   font-size: 1.6rem;
   font-family: arial, sans-serif; }
 
+.nav {
+  height: 5rem;
+  padding: 1rem 2rem;
+  background-color: #2e5a25;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .nav__logo {
+    font-size: 5rem;
+    color: #fff;
+    font-family: "Ranchers", cursive; }
+
 .container {
-  max-width: 370px;
+  max-width: 500px;
   width: 100%;
   margin: 0 auto; }
 
 .button {
+  display: inline-block;
   padding: 1rem 2rem;
-  margin-top: 1rem;
+  margin: 2rem 0;
   max-width: 150px;
   border-radius: 0.5rem;
   border: 0;
@@ -40,7 +55,7 @@ body {
     width: 95%;
     background-color: #fff;
     border-radius: 0.5rem;
-    padding: 0.1rem 0.5rem;
+    padding: 2rem;
     margin: 2rem 0; }
 
 .form--column {

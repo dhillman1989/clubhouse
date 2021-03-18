@@ -13,7 +13,7 @@
         <% if (typeof(errors) !== "undefined" ){ %>
         <div class="errors">
           <% errors.map(err => { %>
-          <p class="errors__error"><%= err %></p>
+          <p class="errors__error"><%= err.msg %></p>
           <%})%>
         </div>
 

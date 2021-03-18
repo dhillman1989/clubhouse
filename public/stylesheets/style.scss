@@ -1,5 +1,7 @@
 * {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 a:link,
@@ -11,6 +13,10 @@ html {
   font-size: 62.5%;
 }
 
+$sp-sm: 1rem;
+$sp-md: 2rem;
+$sp-lg: 3rem;
+
 body {
   background-color: #ddd;
   color: #111;
@@ -18,15 +24,30 @@ body {
   font-family: arial, sans-serif;
 }
 
+.nav {
+  height: 5rem;
+  padding: $sp-sm $sp-md;
+  background-color: rgb(46, 90, 37);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__logo {
+    font-size: 5rem;
+    color: #fff;
+    font-family: "Ranchers", cursive;
+  }
+}
+
 .container {
-  max-width: 370px;
+  max-width: 500px;
   width: 100%;
   margin: 0 auto;
 }
 
 .button {
-  padding: 1rem 2rem;
-  margin-top: 1rem;
+  display: inline-block;
+  padding: $sp-sm $sp-md;
+  margin: $sp-md 0;
   max-width: 150px;
   border-radius: 0.5rem;
   border: 0;
@@ -48,35 +69,34 @@ body {
     width: 95%;
     background-color: #fff;
     border-radius: 0.5rem;
-    padding: 0.1rem 0.5rem;
-    margin: 2rem 0;
+    padding: $sp-md;
+    margin: $sp-md 0;
   }
 }
 
-.form{
-  &--column{
+.form {
+  &--column {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: center;
     align-items: stretch;
   }
-  &__input{
-    border: 2px solid rgba(0,0,0,0.5);
+  &__input {
+    border: 2px solid rgba(0, 0, 0, 0.5);
     outline: none;
     border-radius: 0.5rem;
 
     padding: 1rem 1.5rem;
     width: 100%;
   }
-
 }
 
-.errors{
+.errors {
   width: 100%;
   padding: 0.5rem 1rem;
   background-color: rgb(255, 56, 56);
   border-radius: 0.25rem;
-  &__error{
+  &__error {
     font-size: 1.4rem;
     color: #fff;
   }

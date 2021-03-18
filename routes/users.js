@@ -5,6 +5,7 @@ const passport = require("passport");
 const User = require("../models/User");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const nodemailer = require("nodemailer");
+const { body, validationResult } = require("express-validator");
 
 ///NODEMAILER SETUP
 var transporter = nodemailer.createTransport({
@@ -24,22 +25,28 @@ router.get("/signup", (req, res, next) => {
   res.render("signupform");
 });
 
-router.post("/signup", async (req, res, next) => {
-  const { username, password, confirmPassword, email } = req.body;
-  const user = await User.findOne({ username });
-  const errors = [];
-  if (!username || !password || !confirmPassword) {
-    errors.push("All fields are required");
-  }
-  if (password !== confirmPassword) {
-    errors.push("Passwords must match");
-  }
-  if (user) {
-    errors.push("A user with this username already exists");
-  }
-  if (errors.length) {
-    res.render("signupform", { errors });
-  } else {
+router.post(
+  "/signup",
+  body("username")
+    .isLength({ min: 6, max: 12 })
+    .withMessage("Username must be between 6 and 12 characters"),
+  body("email")
+    .isEmail()
+    .withMessage("Please provide a correctly formatted email address"),
+  body("password")
+    .isLength({ min: 6, max: 20 })
+    .withMessage("Password must be between 6 and 20 characters"),
+  body("confirmPassword")
+    .custom((value, { req }) => value === req.body.password)
+    .withMessage("Passwords must match"),
+  async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.render("signupform", { errors: errors.array() });
+    }
+
+    const { username, password, confirmPassword, email } = req.body;
+
     const cleanUsername = username.trim().toLowerCase();
     bcrypt.hash(password, 8, async function (err, hash) {
       const user = await new User({
@@ -73,7 +80,7 @@ router.post("/signup", async (req, res, next) => {
       });
     });
   }
-});
+);
 
 router.get("/login", (req, res, next) => {
   res.render("loginform");
