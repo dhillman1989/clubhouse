@@ -1,0 +1,14 @@
+.nav {
+  height: 5rem;
+  padding: $sp-sm $sp-md;
+  background-color: rgb(46, 90, 37);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $sp-lg;
+  &__logo {
+    font-size: 5rem;
+    color: #fff;
+    font-family: "Ranchers", cursive;
+  }
+}

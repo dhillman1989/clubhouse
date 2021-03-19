@@ -1,0 +1,21 @@
+* {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: #ddd;
+  color: #111;
+  font-size: 1.6rem;
+  font-family: arial, sans-serif;
+}

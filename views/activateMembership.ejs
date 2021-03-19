@@ -1,21 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <% if (typeof(error) !== "undefined"){ %>
-    <div class="errors"><%=error%></div>
-    <%}%>
-    <!----->
-    <%if (currentUser && currentUser.isMember) {%> Your membership has been
-    activated.<%}else{%>
-    <form action="" method="POST">
-      <input class="form__input" name="code" id="code" />
-      <button class="button button--primary">Submit</button>
-    </form>
-    <%}%>
-  </body>
-</html>
+<%- include ../partials/header %> <% if (typeof(error) !== "undefined"){ %>
+<div class="errors"><%=error%></div>
+<%}%>
+<!----->
+<%if (currentUser && currentUser.isMember) {%> Your membership has been
+activated.<%}else{%>
+
+<p>
+  In order to activate your account, please enter the secret code that we
+  emailed to you when you signed up:
+</p>
+<form action="" method="POST">
+  <input class="form__input" name="code" id="code" />
+  <button class="button button--primary">Submit</button>
+</form>
+<%}%> <%- include ../partials/footer %>

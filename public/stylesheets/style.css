@@ -24,23 +24,8 @@ h5,
 h6 {
   margin-top: 3rem 0; }
 
-.nav {
-  height: 5rem;
-  padding: 1rem 2rem;
-  background-color: #2e5a25;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 3rem; }
-  .nav__logo {
-    font-size: 5rem;
-    color: #fff;
-    font-family: "Ranchers", cursive; }
-
-.container {
-  max-width: 500px;
-  width: 100%;
-  margin: 0 auto; }
+p {
+  margin-top: 2rem; }
 
 .button {
   display: inline-block;
@@ -58,14 +43,19 @@ h6 {
     background-color: #ff4040;
     color: #fff; }
 
-.messages {
-  width: 100%; }
-  .messages__message {
-    width: 95%;
-    background-color: #fff;
-    border-radius: 0.5rem;
-    padding: 2rem;
-    margin: 2rem 0; }
+.container {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto; }
+
+.errors {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: #ff3838;
+  border-radius: 0.25rem; }
+  .errors__error {
+    font-size: 1.4rem;
+    color: #fff; }
 
 .form--column {
   display: flex;
@@ -77,16 +67,30 @@ h6 {
   border: 2px solid rgba(0, 0, 0, 0.5);
   outline: none;
   border-radius: 0.5rem;
-  padding: 1rem 1.5rem;
+  font-size: 1.6rem;
+  padding: 1rem 1rem;
   width: 100%; }
 
-.errors {
-  width: 100%;
-  padding: 0.5rem 1rem;
-  background-color: #ff3838;
-  border-radius: 0.25rem; }
-  .errors__error {
-    font-size: 1.4rem;
-    color: #fff; }
+.messages {
+  width: 100%; }
+  .messages__message {
+    width: 95%;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    margin: 2rem 0; }
+
+.nav {
+  height: 5rem;
+  padding: 1rem 2rem;
+  background-color: #2e5a25;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem; }
+  .nav__logo {
+    font-size: 5rem;
+    color: #fff;
+    font-family: "Ranchers", cursive; }
 
 /*# sourceMappingURL=style.css.map */

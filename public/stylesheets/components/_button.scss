@@ -1,0 +1,18 @@
+.button {
+  display: inline-block;
+  padding: $sp-sm $sp-md;
+  margin: $sp-md 0;
+  max-width: 150px;
+  border-radius: 0.5rem;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  &--primary {
+    background-color: rgb(0, 156, 0);
+    color: #fff;
+  }
+  &--danger {
+    background-color: rgb(255, 64, 64);
+    color: #fff;
+  }
+}

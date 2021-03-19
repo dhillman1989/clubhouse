@@ -1,0 +1,16 @@
+.form {
+  &--column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+  }
+  &__input {
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    outline: none;
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    padding: $sp-sm $sp-sm;
+    width: 100%;
+  }
+}

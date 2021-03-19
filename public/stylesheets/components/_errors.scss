@@ -1,0 +1,10 @@
+.errors {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: rgb(255, 56, 56);
+  border-radius: 0.25rem;
+  &__error {
+    font-size: 1.4rem;
+    color: #fff;
+  }
+}

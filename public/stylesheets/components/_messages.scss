@@ -1,0 +1,10 @@
+.messages {
+  width: 100%;
+  &__message {
+    width: 95%;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: $sp-md;
+    margin: $sp-md 0;
+  }
+}
